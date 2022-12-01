@@ -5,7 +5,6 @@ frontend:
     preBuild:
       commands:
         - "# frontend preBuild"
-        - npm ci
         - nvm install 16
         - nvm use 16
         - nvm alias default 16
@@ -41,7 +40,6 @@ backend:
     preBuild:
       commands:
         - "# backend preBuild"
-        - npm ci
         - nvm install 16
         - nvm use 16
         - nvm alias default 16
