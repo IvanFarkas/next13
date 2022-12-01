@@ -5,9 +5,9 @@ frontend:
     preBuild:
       commands:
         - "# frontend preBuild"
-        - nvm install 18
-        - nvm use 18
-        - nvm alias default 18
+        - nvm install 17
+        - nvm use 17
+        - nvm alias default 17
         - yarn install
 
     build:
@@ -39,9 +39,9 @@ backend:
     preBuild:
       commands:
         - "# backend preBuild"
-        - nvm install 18
-        - nvm use 18
-        - nvm alias default 18
+        - nvm install 17
+        - nvm use 17
+        - nvm alias default 17
         - yarn install
 
     build:
