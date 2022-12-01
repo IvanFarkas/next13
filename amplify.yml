@@ -15,7 +15,7 @@ frontend:
         - "# frontend build"
         - if [ "${AWS_BRANCH}" = "main" ]; then echo "main branch"; fi
         - if [ "${AWS_BRANCH}" = "develop" ]; then echo "develop branch"; fi
-        - env | grep -e VERSION_
+        - env | grep -e VERSION_ -e AWS_ >> .env.production
         - yarn run build
 
     postBuild:
