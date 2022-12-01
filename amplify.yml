@@ -1,0 +1,56 @@
+version: 1
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - "# frontend preBuild"
+        - nvm install 16
+        - nvm use 16
+        - nvm alias default 16
+        - nvm install lts/gallium
+        - nvm use lts/gallium
+        - yarn install
+
+    build:
+      commands:
+        - "# frontend build"
+        - if [ "${AWS_BRANCH}" = "main" ]; then echo "main branch"; fi
+        - if [ "${AWS_BRANCH}" = "develop" ]; then echo "develop branch"; fi
+        - echo env
+        - "# env | grep -e COGNITO_ -e IPSTACK_ >> .env.production"
+        - "# env | grep -e NEXT_PUBLIC_ >> .env.production"
+        - yarn run build
+
+    postBuild:
+      commands:
+        - "# frontend postBuild"
+
+  artifacts:
+    baseDirectory: .next
+    files:
+      - "**/*"
+
+  cache:
+    paths:
+      - node_modules/**/*
+
+backend:
+  phases:
+    preBuild:
+      commands:
+        - "# backend preBuild"
+        - nvm install 16
+        - nvm use 16
+        - nvm alias default 16
+        - yarn install
+
+    build:
+      commands:
+        - "# backend build"
+        - "# Execute Amplify CLI with the helper script"
+        - amplifyPush --simple
+
+    postBuild:
+      commands:
+        - "# backend postBuild"
