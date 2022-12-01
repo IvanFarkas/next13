@@ -8,8 +8,6 @@ frontend:
         - nvm install 18
         - nvm use 18
         - nvm alias default 18
-        - nvm install lts/gallium
-        - nvm use lts/gallium
         - yarn install
 
     build:
