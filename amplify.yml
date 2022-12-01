@@ -5,9 +5,9 @@ frontend:
     preBuild:
       commands:
         - "# frontend preBuild"
-        - nvm install 16
-        - nvm use 16
-        - nvm alias default 16
+        - nvm install 18
+        - nvm use 18
+        - nvm alias default 18
         - nvm install lts/gallium
         - nvm use lts/gallium
         - yarn install
@@ -18,6 +18,7 @@ frontend:
         - if [ "${AWS_BRANCH}" = "main" ]; then echo "main branch"; fi
         - if [ "${AWS_BRANCH}" = "develop" ]; then echo "develop branch"; fi
         - printenv
+        - cat .env.production
         - "# env | grep -e COGNITO_ -e IPSTACK_ >> .env.production"
         - "# env | grep -e NEXT_PUBLIC_ >> .env.production"
         - yarn run build
@@ -40,9 +41,9 @@ backend:
     preBuild:
       commands:
         - "# backend preBuild"
-        - nvm install 16
-        - nvm use 16
-        - nvm alias default 16
+        - nvm install 18
+        - nvm use 18
+        - nvm alias default 18
         - yarn install
 
     build:
